@@ -36,7 +36,7 @@ function [ inputVar, medVar ] = rimFullProcV2( img, expFact, cutFreq, otfCol, pr
     meanFiltImg   = zeros(expSize);
     varFiltImg    = zeros(expSize); %
 
-    for i = 1:numImg
+    parfor i = 1:numImg
         
         %
         
@@ -56,7 +56,6 @@ function [ inputVar, medVar ] = rimFullProcV2( img, expFact, cutFreq, otfCol, pr
         noisePart  = ifft2( maskNoisePart .* curFtImg ); %
         meanNoisePart = meanNoisePart + noisePart; %
         varNoisePart  = varNoisePart  + abs(noisePart).^2; %
-        i
 
     end
    
