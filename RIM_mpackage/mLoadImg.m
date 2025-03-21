@@ -31,7 +31,7 @@ function [ img, listFileName ] = mLoadImg( fileOrDir , id, curSize,curPos, isFnc
     end
 
     if( exist( fileOrDir, 'file'  ) == 2 )
-
+%
        
        listFileName = fileOrDir;
        %

@@ -16,8 +16,8 @@ varPathPsfExcitation = 'D:\RIM\data\PSF\';
 varFilePsfExcitation = 'PSF256_405nm.tif' ;
 varWienerParamFieldValue = 0.05;
 
-[otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(varPathPsfEmission, varFilePsfEmission,varExpFactorPSFFieldValue, ...
-    curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
+[otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(varPathPsfEmission, varFilePsfEmission,...
+varExpFactorPSFFieldValue,curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
 
 
 %% rimReconNewton

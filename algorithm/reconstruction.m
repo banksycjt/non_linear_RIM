@@ -1,4 +1,7 @@
-function reconstruction(app,tiffFiles,varFolderValue,varExpFactorFieldValue,varPathPsfEmission,varFilePsfEmission,varExpFactorPSFFieldValue,varPathPsfExcitation,varFilePsfExcitation,varNumItFieldValue,varWienerParamFieldValue,varShowImages, varSpeckleperimage, varOverlapStream, varRegularisationParameter, varBackupFolder)
+function reconstruction(app,tiffFiles,varFolderValue,varExpFactorFieldValue,varPathPsfEmission,...
+    varFilePsfEmission,varExpFactorPSFFieldValue,varPathPsfExcitation,varFilePsfExcitation,...
+    varNumItFieldValue,varWienerParamFieldValue,varShowImages, varSpeckleperimage, varOverlapStream,...
+    varRegularisationParameter, varBackupFolder)
 
 % tiffFiles : struct of all the tiffs in the varFolderValue
 % varFolderValue : path of tiffFiles
@@ -47,7 +50,8 @@ if varShowImages == 1
     curSize = varExpFactorFieldValue*size(img{1});
     
     % OTFS : 
-    [otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(app,varPathPsfEmission, varFilePsfEmission,varExpFactorPSFFieldValue,curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
+    [otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(app,varPathPsfEmission, varFilePsfEmission,...
+    varExpFactorPSFFieldValue,curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
     
     % rimFullProcV2 : show three pictures, one raw speckle image(the first one of img); average of pre-filtered
     % raw image(mean of all image); standard deviation(variance of filted images)
@@ -70,7 +74,8 @@ else
     %---- OTFS -------------------------------------------------------------------------------------------------
     t1 = tic;
 
-    [otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(app,varPathPsfEmission, varFilePsfEmission,varExpFactorPSFFieldValue,curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
+    [otfs, otfCol, otfIllu, preFilt ] = otfsCalculation(app,varPathPsfEmission, varFilePsfEmission,...
+    varExpFactorPSFFieldValue,curSize,varPathPsfExcitation,varFilePsfExcitation,varWienerParamFieldValue,numFilt);
     
     temps = toc(t1);
     s = seconds(temps);
