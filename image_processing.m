@@ -22,19 +22,31 @@ abbe_diffraction_limit = light_wavelength / (2 * numerical_aperture);
 % 创建一个多页的TIFF文件
 tiff_filename = 'combined_images.tif';
 
-random_illumination_image = zeros(512, 512, 80);
-combined_image = zeros(512, 512, "uint32");
+random_illumination_image = zeros(256, 256, 80);
+combined_image = zeros(256, 256, "uint32");
 
-for i = 1:80
+for i = 1:800
     % speckle intensity
-    random_pixel = zeros(512, 512, "uint8");
-    indices = randperm(512 * 512, 100000);
+    random_pixel = zeros(256, 256, "uint32");
+    indices = randperm(256, 256, 10000);
     random_pixel(indices) = 1;
 
     speckle_image = 255 * ground_truth_image .* random_pixel;
 
     % psf type: gaussian
-    convolved_img = imgaussfilt(speckle_image, 4);
+    % 读取卷积核图像
+    kernel_image = imread('kernel_image.tif');
+    kernel_image = im2double(kernel_image); % 确保卷积核图像为 double 类型
+
+    % 调整 speckle_image 尺寸以匹配 kernel_image
+    speckle_image_resized = imresize(speckle_image, [256, 256]);
+
+    % 进行卷积操作
+    convolved_img = conv2(speckle_image_resized, kernel_image, 'same');
+
+    % 调整卷积结果尺寸以匹配原始图像尺寸
+    convolved_img = imresize(convolved_img, [512, 512]);
+
     random_illumination_image(:, :, i) = convolved_img;
     fprintf("%d次开始\n", i);
     % 将图像写入多页TIFF文件
