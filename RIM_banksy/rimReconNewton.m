@@ -105,7 +105,11 @@ function [recon,memCrit] = rimReconNewton(showImages, variance , otfs , numItMax
         end
     end  
     
-    
+    % Normalize the reconstructed image
+    recon = recon / max(recon(:)); % Normalize to the range [0, 1]
+     % Save the reconstructed image as a TIFF file
+    recon_uint16 = uint16(65535 * mat2gray(recon)); % Scale to uint16 range
+    imwrite(recon_uint16, 'reconstructed_image.tiff', 'tiff');
     %
     %
     %% L2迭代    
