@@ -1,8 +1,8 @@
 %% initializtion
-
+clear;close all;clc;
 addpath(genpath('E:\banksycjt_git\non_linear_RIM\non_linear_RIM\RIM_mpackage'))
 
-RawPicturePath = 'E:\OneDrive - stu.ecnu.edu.cn\collected_images2.tiff';
+RawPicturePath = 'E:\OneDrive - stu.ecnu.edu.cn\line_pair_256_400_488_520\collected_images256_400frame_520488nm.tiff';
 tiffFiles = dir(RawPicturePath); % tiffFiles : struct of information of the tiffs
 img = mLoadImg(RawPicturePath, [], [], [], 0);  % image in cells
 
@@ -14,11 +14,11 @@ varShowImages = 1; % 1 represent show all the image
 varNumItFieldValue = 20;% varNumItFieldValue : number of iteration
 varRegularisationParameter = 0.15; %L2 parmeter
 
-varPathPsfEmission = 'E:\banksycjt_git\non_linear_RIM\non_linear_RIM\line_pair\';
-varFilePsfEmission = 'PSF512_520nm.tif' ;
+varPathPsfEmission = 'E:\OneDrive - stu.ecnu.edu.cn\line_pair_256_400_488_520\';
+varFilePsfEmission = 'PSF256_520nm.tif' ;
 varExpFactorPSFFieldValue = 1; % psf expansion factor, physical size of pixels will be divided by this factor.
-varPathPsfExcitation = 'E:\banksycjt_git\non_linear_RIM\non_linear_RIM\line_pair\';
-varFilePsfExcitation = 'PSF512_488nm.tif' ;
+varPathPsfExcitation = 'E:\OneDrive - stu.ecnu.edu.cn\line_pair_256_400_488_520\';
+varFilePsfExcitation = 'PSF256_488nm.tif' ;
 varWienerParamFieldValue = 0.15; % varWienerParamFieldValue : Wiener filtering parameter
 
 

@@ -103,7 +103,9 @@ function [recon,memCrit] = rimReconNewton(showImages, variance , otfs , numItMax
                 break;
             end
         end
-    end   
+    end  
+    
+    
     %
     %
     %% L2迭代    
